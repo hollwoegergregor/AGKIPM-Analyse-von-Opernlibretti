@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI-gestützte Analyse von Opernlibretti</title>
+    <!-- Lade Tailwind CSS CDN für schnelles und responsives Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfiguriere die Schriftart 'Inter' */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Heller Hintergrund */
+            color: #1a202c; /* Dunkler Text */
+            /* padding-top für Navigation entfernt */
+        }
+
+        /* Stilisiert den Haupttitel wie eine Überschrift erster Ordnung (Blau-Akzent) */
+        .post-title {
+            font-size: 2.25rem; /* 3xl */
+            font-weight: 800; /* Extra Bold */
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2b6cb0; /* Ein tiefes, dunkles Blau (primary) */
+        }
+
+        /* Stilisiert die Untertitel (mit hellblauem Akzent) */
+        .section-subtitle {
+            /* Scroll-Margin ist nicht mehr nötig, da Navigation entfernt wurde */
+            font-size: 1.5rem; /* xl */
+            font-weight: 700; /* Bold */
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2b6cb0; /* Starker blauer Akzent */
+            border-left: 5px solid #4299e1; /* Ein hellerer, dickerer Akzentstreifen */
+            padding-left: 1rem;
+        }
+
+        /* Fügt dem Fließtext eine gute Lesbarkeit hinzu */
+        .post-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Hauptcontainer für den Inhalt -->
+    <main id="top" class="py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Zentrierter, lesbarer Block (max. 768px Breite) -->
+        <div class="max-w-3xl mx-auto bg-white p-8 sm:p-10 lg:p-12 shadow-xl rounded-2xl border border-gray-100">
+
+            <!-- Header und Titel des Projekts -->
+            <header class="text-center mb-10">
+                <!-- Die Zeile mit "Forschungsprojekt" wurde entfernt. -->
+                <h1 class="post-title">KI-gestützte Analyse von Opernlibretti der Wiener Klassik – Projektüberblick</h1>
+                <p class="text-gray-500 italic">Ein Beitrag zur Digitalen Geisteswissenschaft und historischen Musikwissenschaft</p>
+            </header>
+
+            <!-- Inhalt des Blogbeitrags -->
+            <div class="post-content text-gray-700">
+
+                <p>Dieses Projekt verbindet die Methoden der Digitalen Geisteswissenschaften mit textbasierten Ansätzen der historischen Musikwissenschaft. Im Zentrum steht die systematische Untersuchung von Opernlibretti der Wiener Klassik, deren sprachliche und dramaturgische Schichten mithilfe großer Sprachmodelle transparent gemacht werden sollen. Libretti dieser Epoche bilden nicht nur die narrative Grundlage für musikalische Gestaltung, sondern spiegeln zugleich zeittypische Ausdrucksformen, emotionale Muster und komplexe Figurenkonstellationen wider.</p>
+                
+                <h2 id="zielsetzung" class="section-subtitle">Zielsetzung und Leitfragen</h2>
+                <p>Das Projekt verfolgt die übergeordnete Frage, welche Themen, Emotionen und sprachlichen Strukturen die Libretti verschiedener Komponisten prägen. Ziel ist es, Konstanten und Unterschiede zwischen individuellen Handschriften, stilistischen Traditionen und spezifischen dramaturgischen Strategien sichtbar zu machen. Auf diese Weise sollen emotionale Profile, narrative Grundmodelle und charakterbezogene Muster vergleichbar werden.</p>
+
+                <h2 id="datenbasis" class="section-subtitle">Datenbasis und Korpus-Exemplar</h2>
+                <p>Die Datenbasis umfasst öffentlich zugängliche historische Textsammlungen wie <a href="http://www.opera-guide.ch" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">opera-guide.ch</a> und die Libretto-Edition der Digitalen Mozart-Edition. Die Dokumente liegen vorwiegend in .docx- oder .xml-Formaten vor und enthalten typischerweise Metadaten zu Werk, Autorenschaft, Entstehungszeit sowie ausführlich verzeichneten Rollen. Ein exemplarisches Werk aus dem Korpus ist Mozarts <em>Die Entführung aus dem Serail</em> (KV 384), ein zwischen Juli 1781 und Mai 1782 in Wien komponiertes Singspiel nach einem Text von Christoph Friedrich Bretzner in der Bearbeitung Johann Gottlieb Stephanies des Jüngeren. Die Wiener Erstaufführung erfolgte am 16. Juli 1782. Die Oper stellt ein vielschichtiges Figurenensemble bereit, zu dem Konstanze, Belmonte, Blonde, Pedrillo und Osmin gehören, ergänzt durch Neben- und Sprechrollen und dem Chor der Janitscharen. Solche detaillierten Metadaten sind für den strukturierten Einsatz von KI-Modellen essenziell, da sie die Zuordnung von Sprecherstimmen, Handlungsebenen und emotionalen Kontexten ermöglichen.</p>
+
+                <h2 id="methodik" class="section-subtitle">Methodisches Vorgehen mit LLMs</h2>
+                <p>Vor Beginn der computergestützten Analyse werden sämtliche Libretti formal vereinheitlicht, von Regieanweisungen befreit und in ein klares, maschinenlesbares Format überführt. Dieses bereinigte Korpus bildet die Grundlage für die modellgestützte Auswertung. Die Anwendung von LLMs ermöglicht anschließend die Extraktion zentraler thematischer Leitmotive, die Identifikation affektiver Muster sowie eine präzise Erfassung von Beziehungen zwischen den Figuren. Darüber hinaus entstehen szenenspezifische Zusammenfassungen, die später für umfassende Vergleichsstudien herangezogen werden können.</p>
+
+                <p>Auf dieser Basis wird es möglich, die dramaturgischen Profile verschiedener Komponisten der Wiener Klassik systematisch miteinander in Beziehung zu setzen. Das Beispiel der <em>Entführung aus dem Serail</em> dient hierbei als erste Referenz zur Entwicklung und Feinjustierung des methodischen Vorgehens und zeigt exemplarisch, wie sich klassische Operntexte in ihrer emotionalen und narrativen Struktur algorithmisch erfassen lassen.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer-Bereich -->
+    <footer id="kontakt" class="py-8 bg-gray-200 text-center text-gray-600 text-sm mt-12 border-t-4 border-blue-500">
+        <div class="max-w-3xl mx-auto px-4">
+            <h3 class="text-lg font-bold text-blue-700 mb-2">Kontakt und Impressum</h3>
+            <p class="mb-1">&copy; 2025 Libretti-Analyse Projekt.</p>
+            <p>Ein Forschungsprojekt im Bereich Digitale Geisteswissenschaften. Fragen zum Projekt: <a href="mailto:info@libretti-analyse.de" class="text-blue-600 hover:text-blue-800">info@libretti-analyse.de</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
