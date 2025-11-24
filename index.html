@@ -28,7 +28,6 @@
 
         /* Stilisiert die Untertitel (mit hellblauem Akzent) */
         .section-subtitle {
-            /* Scroll-Margin ist nicht mehr nötig, da Navigation entfernt wurde */
             font-size: 1.5rem; /* xl */
             font-weight: 700; /* Bold */
             margin-top: 2.5rem;
@@ -44,6 +43,31 @@
             line-height: 1.75;
             text-align: justify;
         }
+
+        /* VEREINHEITLICHTER STIL FÜR BEIDE BOXEN: HELLGRAUER HINTERGRUND UND BLAUER AKZENT */
+        .code-example, .llm-output {
+            background-color: #f0f4f8; /* Sehr helles, neutrales Grau */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            /* Einheitlicher blauer Akzentstreifen */
+            border-left: 4px solid #4299e1; 
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Der Code-Tag im .code-example behält die monospaced Schrift */
+        .code-example code {
+            display: block;
+            white-space: pre-wrap;
+        }
+        
+        /* Entfernt die spezifische LLM-Output-Farbe, da sie jetzt vereinheitlicht ist */
+        /* .llm-output { ... wurde in die gemeinsame Regel .code-example, .llm-output integriert } */
+
     </style>
 </head>
 <body class="min-h-screen antialiased">
@@ -55,12 +79,11 @@
 
             <!-- Header und Titel des Projekts -->
             <header class="text-center mb-10">
-                <!-- Die Zeile mit "Forschungsprojekt" wurde entfernt. -->
                 <h1 class="post-title">KI-gestützte Analyse von Opernlibretti der Wiener Klassik – Projektüberblick</h1>
                 <p class="text-gray-500 italic">Ein Beitrag zur Digitalen Geisteswissenschaft und historischen Musikwissenschaft</p>
             </header>
 
-            <!-- Inhalt des Blogbeitrags -->
+            <!-- Inhalt des Blogbeitrags (Ursprünglicher Text) -->
             <div class="post-content text-gray-700">
 
                 <p>Dieses Projekt verbindet die Methoden der Digitalen Geisteswissenschaften mit textbasierten Ansätzen der historischen Musikwissenschaft. Im Zentrum steht die systematische Untersuchung von Opernlibretti der Wiener Klassik, deren sprachliche und dramaturgische Schichten mithilfe großer Sprachmodelle transparent gemacht werden sollen. Libretti dieser Epoche bilden nicht nur die narrative Grundlage für musikalische Gestaltung, sondern spiegeln zugleich zeittypische Ausdrucksformen, emotionale Muster und komplexe Figurenkonstellationen wider.</p>
@@ -75,6 +98,35 @@
                 <p>Vor Beginn der computergestützten Analyse werden sämtliche Libretti formal vereinheitlicht, von Regieanweisungen befreit und in ein klares, maschinenlesbares Format überführt. Dieses bereinigte Korpus bildet die Grundlage für die modellgestützte Auswertung. Die Anwendung von LLMs ermöglicht anschließend die Extraktion zentraler thematischer Leitmotive, die Identifikation affektiver Muster sowie eine präzise Erfassung von Beziehungen zwischen den Figuren. Darüber hinaus entstehen szenenspezifische Zusammenfassungen, die später für umfassende Vergleichsstudien herangezogen werden können.</p>
 
                 <p>Auf dieser Basis wird es möglich, die dramaturgischen Profile verschiedener Komponisten der Wiener Klassik systematisch miteinander in Beziehung zu setzen. Das Beispiel der <em>Entführung aus dem Serail</em> dient hierbei als erste Referenz zur Entwicklung und Feinjustierung des methodischen Vorgehens und zeigt exemplarisch, wie sich klassische Operntexte in ihrer emotionalen und narrativen Struktur algorithmisch erfassen lassen.</p>
+                
+                <!-- NEUER, GEKÜRZTER ABSCHNITT -->
+                <hr class="my-10 border-blue-200">
+
+                <h2 id="prompt-engineering" class="section-subtitle">Vertiefung: Prompt Engineering – Geplante LLM-Interaktionen</h2>
+                
+                <p>Die Qualität der Analyse steht und fällt mit der Präzision der Anweisungen an die Large Language Models (LLMs). Es wird eine mehrstufige Prompt-Strategie genutzt, die speziell darauf ausgelegt ist, historische, kulturelle und dramaturgische Nuancen der Libretti zu erfassen und die Ergebnisse in einem strukturierten Format zu erhalten.</p>
+
+                <h3 class="font-bold mt-6 mb-2 text-blue-600">Extraktion von Figurenbeziehungen (Relationen)</h3>
+                <p>Ein zentrales Ziel ist die Erstellung eines automatischen Beziehungsnetzwerks pro Oper. Hierzu wird ein Ausschnitt des Librettos an das Modell übergeben, mit dem Auftrag, die emotionalen Interaktionen zwischen den Figuren zu quantifizieren und qualifizieren. Die Ausgabe erfolgt in einem strukturierten, maschinenlesbaren Format (JSON) zur direkten Weiterverarbeitung.</p>
+                
+                <p class="italic text-sm text-gray-500 mb-1">Beispiel-Prompt für Beziehungsanalyse:</p>
+                <div class="code-example">
+                    <code>
+                        **Anweisung:** Analysiere den Szenentext und extrahiere alle Beziehungen als Liste ('Aktor', 'Ziel', 'Emotion', 'Intensität').
+                    </code>
+                </div>
+                
+
+                <h3 class="font-bold mt-6 mb-2 text-blue-600">Identifikation affektiver Muster</h3>
+                <p>Zur Erfassung epochentypischer Themen (Ehre, Liebe, Freiheit) wird das LLM angewiesen, Textpassagen bestimmten Kategorien aus der historischen Affektenlehre zuzuordnen. Dies ermöglicht eine systematische, quantitative Erfassung des Gefühlshaushalts der Libretti.</p>
+
+                <p class="italic text-sm text-gray-500 mb-1">Simulierte LLM-Ausgabe für Affektanalyse:</p>
+                <div class="llm-output">
+                    **Simulierte LLM-Ausgabe (Auszug):** Trauer (Intensität 5/5, Begründung: "ew'ge Trennung," "finstrer Schmerz"); Sehnsucht (Intensität 3/5, Begründung: "verlorenes Glück").
+                </div>
+
+                <p>Diese konsistente und iterative Anwendung von Prompt-Templates schafft eine quantifizierbare Basis, um die dramaturgischen Profile verschiedener Komponisten der Wiener Klassik systematisch zu vergleichen.</p>
+
             </div>
         </div>
     </main>
@@ -84,7 +136,7 @@
         <div class="max-w-3xl mx-auto px-4">
             <h3 class="text-lg font-bold text-blue-700 mb-2">Kontakt und Impressum</h3>
             <p class="mb-1">&copy; 2025 Libretti-Analyse Projekt.</p>
-            <p>Ein Forschungsprojekt im Bereich Digitale Geisteswissenschaften. Fragen zum Projekt: <a href="mailto:info@libretti-analyse.de" class="text-blue-600 hover:text-blue-800">info@libretti-analyse.de</a></p>
+            <p>Ein Forschungsprojekt im Bereich Digitale Geisteswissenschaften und historische Musikwissenschaft. Fragen zum Projekt: <a href="mailto:info@libretti-analyse.de" class="text-blue-600 hover:text-blue-800">info@libretti-analyse.de</a></p>
         </div>
     </footer>
 
