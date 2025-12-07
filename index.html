@@ -20,24 +20,23 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Hauptcontainer: Begrenzt die Breite, zentriert und fügt horizontalen Rand hinzu (FIX) */
-        .main-container {
-            max-width: 768px; /* max-w-3xl */
-            margin-left: auto;
-            margin-right: auto;
-            background-color: #ffffff; /* Weißer Hintergrund */
-            padding: 48px; /* py-12 und p-12 */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-            border-radius: 16px; /* rounded-2xl */
-            border: 1px solid #e2e8f0; /* border-gray-100 */
-        }
-        
-        /* Sorgt für Randabstand auf mobilen Geräten */
-        @media (max-width: 768px) {
-            .main-container {
-                padding: 20px; /* sm:p-5 */
-            }
-        }
+        /* Hauptcontainer: Begrenzt die Breite, zentriert und fügt horizontalen Rand hinzu */
+.main-container {
+    max-width: 768px; /* max-w-3xl, die maximale Textbreite */
+    margin-left: auto;
+    margin-right: auto; /* Zentriert den Block auf der Seite */
+    
+    /* ... weitere Styling-Regeln (Hintergrund, Schatten, etc.) ... */
+    
+    padding: 48px; /* Vertikaler und horizontaler Innenabstand für Desktop */
+}
+
+/* Sorgt für Randabstand auf mobilen Geräten */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px; /* Reduzierter Abstand auf kleinen Bildschirmen */
+    }
+}
 
         /* =========================================
            TYPOGRAFIE (FIX)
@@ -148,7 +147,7 @@
                 <p>Das Projekt verfolgt die übergeordnete Frage, welche Themen, Emotionen und sprachlichen Strukturen die Libretti verschiedener Komponisten prägen. Ziel ist es, Konstanten und Unterschiede zwischen den einzelnen Komponisten und Autoren und stilistischen Traditionen sichtbar zu machen. Auf diese Weise sollen häufiger vorkommende Emotionen, narrative Grundmodelle (wie "Liebesopern" oder "Rettungsgeschichten") und häufig auftretende Rollentypen (wie "Diener" oder "Adliger") vergleichbar werden.</p>
 
                 <h2 id="datenbasis" class="section-subtitle">Datenbasis und Korpus-Exemplar</h2>
-                <p>Die Datenbasis umfasst öffentlich zugängliche historische Textsammlungen wie <a href="http://www.opera-guide.ch" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">opera-guide.ch</a> und die Libretto-Edition der Digitalen Mozart-Edition (<a href="https://dme.mozarteum.at/DME/libretti-edition/wrkliste.php?sec=libedi&l=" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">dme.mozarteum.at/DME/libretti-edition</a>). Die Dokumente liegen vorwiegend in .docx- oder .xml-Formaten vor und enthalten typischerweise Metadaten zu Werk, Autorenschaft, Entstehungszeit sowie ausführlich verzeichneten Rollen. Ein exemplarisches Werk aus dem Korpus ist Mozarts <em>Die Entführung aus dem Serail</em> (KV 384), ein zwischen Juli 1781 und Mai 1782 in Wien komponiertes Singspiel nach einem Text von Christoph Friedrich Bretzner in der Bearbeitung Johann Gottlieb Stephanies des Jüngeren. Die Wiener Erstaufführung erfolgte am 16. Juli 1782. Die Oper stellt ein vielschichtiges Figurenensemble bereit, zu dem Konstanze, Belmonte, Blonde, Pedrillo und Osmin gehören, ergänzt durch Neben- und Sprechrollen und dem Chor der Janitscharen. Solche detaillierten Metadaten sind für den strukturierten Einsatz von KI-Modellen essenziell, da sie die Zuordnung von Sprecherstimmen, Handlungsebenen und emotionalen Kontexten ermöglichen.</p>
+                <p>Die Datenbasis umfasst öffentlich zugängliche historische Textsammlungen wie <a href="http://www.opera-guide.ch" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">opera-guide.ch</a> und die Libretto-Edition der Digitalen Mozart-Edition (<a href="https://dme.mozarteum.at/DME/libretti-edition/wrkliste.php?sec=libedi&l=" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">dme.mozarteum.at/DME/libretti-edition</a>). Die Dokumente liegen vorwiegend in .docx- oder .xml-Formaten vor und enthalten typischerweise Metadaten zu Werk, Autorenschaft, Entstehungszeit sowie ausführlich verzeichneten Rollen. Ein exemplarisches Werk aus dem Korpus ist Mozarts <em>Die Entführung aus dem Serail</em> (KV 384), ein zwischen Juli 1781 und Mai 1782 in Wien komponiertes Singspiel nach einem Text von Christoph Friedrich Bretzner in der Bearbeitung Johann Gottlieb Stephanies des Jüngeren. Die Wiener Erstaufführung erfolgte am 16. Juli 1782. Die Oper stellt ein vielschichtiges Figurenensemble bereit, zu dem Konstanze, Belmonte, Blonde, Pedrillo und Osmin gehören, ergänzt durch Neben- und Sprechrollen und den Chor der Janitscharen. Solche detaillierten Metadaten sind für den strukturierten Einsatz von KI-Modellen essenziell, da sie die Zuordnung von Sprecherstimmen, Handlungsebenen und emotionalen Kontexten ermöglichen.</p>
 
                 <h2 id="methodik" class="section-subtitle">Methodisches Vorgehen mit LLMs</h2>
                 <p>Vor Beginn der computergestützten Analyse werden sämtliche Libretti formal vereinheitlicht, von Regieanweisungen befreit und in ein klares, maschinenlesbares Format überführt. Dieses bereinigte Korpus bildet die Grundlage für die modellgestützte Auswertung. Die Anwendung von LLMs ermöglicht anschließend die Extraktion zentraler Themeninhalte, die Identifikation sogenanner Affekte sowie eine präzise Erfassung von Beziehungen zwischen den einzelnen Figuren. Darüber hinaus entstehen Zusammenfassungen der einzelnen Szenen, die später für groß angelegte Vergleiche herangezogen werden können.</p>
