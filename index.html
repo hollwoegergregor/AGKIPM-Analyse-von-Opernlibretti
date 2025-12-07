@@ -7,51 +7,75 @@
     <!-- Lade Tailwind CSS CDN für schnelles und responsives Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* NEUER CSS-Block zur Stärkung des Glossar-Layouts auf Desktops */
-@media (min-width: 768px) {
-    .glossary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-        /* Konfiguriere die Schriftart 'Inter' */
+        /* =========================================
+           SCHRIFT UND BASIS-LAYOUT (FIX)
+           ========================================= */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7fafc; /* Heller Hintergrund */
+            background-color: #f7fafc; /* Hellgrau */
             color: #1a202c; /* Dunkler Text */
-            /* padding-top für Navigation entfernt */
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Stilisiert den Haupttitel wie eine Überschrift erster Ordnung (Blau-Akzent) */
+        /* Hauptcontainer: Begrenzt die Breite, zentriert und fügt horizontalen Rand hinzu (FIX) */
+        .main-container {
+            max-width: 768px; /* max-w-3xl */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff; /* Weißer Hintergrund */
+            padding: 48px; /* py-12 und p-12 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            border-radius: 16px; /* rounded-2xl */
+            border: 1px solid #e2e8f0; /* border-gray-100 */
+        }
+        
+        /* Sorgt für Randabstand auf mobilen Geräten */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px; /* sm:p-5 */
+            }
+        }
+
+        /* =========================================
+           TYPOGRAFIE (FIX)
+           ========================================= */
+
+        /* Stilisiert den Haupttitel (Blau-Akzent) */
         .post-title {
             font-size: 2.25rem; /* 3xl */
             font-weight: 800; /* Extra Bold */
             line-height: 1.2;
             margin-bottom: 1.5rem;
             color: #2b6cb0; /* Ein tiefes, dunkles Blau (primary) */
+            text-align: center;
         }
 
-        /* Stilisiert die Untertitel (mit hellblauem Akzent) */
+        /* Stilisiert die Untertitel (Blau-Akzent und Trennlinie) (FIX) */
         .section-subtitle {
             font-size: 1.5rem; /* xl */
             font-weight: 700; /* Bold */
             margin-top: 2.5rem;
             margin-bottom: 1rem;
-            color: #2b6cb0; /* Starker blauer Akzent */
-            border-left: 5px solid #4299e1; /* Ein hellerer, dickerer Akzentstreifen */
+            color: #2b6cb0; /* Starker blauer Text */
+            border-left: 5px solid #4299e1; /* Hellblauer Akzentstreifen */
             padding-left: 1rem;
         }
 
-        /* Fügt dem Fließtext eine gute Lesbarkeit hinzu */
+        /* Fügt dem Fließtext Blocksatz und gute Lesbarkeit hinzu (FIX) */
         .post-content p {
             margin-bottom: 1.5rem;
             line-height: 1.75;
-            text-align: justify;
+            text-align: justify; /* Blocksatz erzwungen */
         }
+        
+        /* =========================================
+           CODE UND GLOSSAR (FIX)
+           ========================================= */
 
-        /* VEREINHEITLICHTER STIL FÜR BEIDE BOXEN: HELLGRAUER HINTERGRUND UND BLAUER AKZENT */
+        /* VEREINHEITLICHTER STIL FÜR BEIDE BOXEN (Obwohl sie jetzt entfernt wurden, bleiben die Klassen für zukünftige Nutzung) */
         .code-example, .llm-output {
             background-color: #f0f4f8; /* Sehr helles, neutrales Grau */
             padding: 1rem;
@@ -60,21 +84,46 @@
             font-family: monospace;
             font-size: 0.875rem;
             white-space: pre-wrap;
-            /* Einheitlicher blauer Akzentstreifen */
-            border-left: 4px solid #4299e1; 
+            border-left: 4px solid #4299e1; /* Einheitlicher blauer Akzentstreifen */
             margin-top: 0.5rem;
             margin-bottom: 1.5rem;
         }
         
-        /* Der Code-Tag im .code-example behält die monospaced Schrift */
-        .code-example code {
-            display: block;
-            white-space: pre-wrap;
+        /* GLOSSAR-BEREICH (Footer) */
+        .footer-area {
+            background-color: #e2e8f0; /* Hellgrauer Block */
+            border-top: 8px solid #2b6cb0; /* Dicke blaue Trennlinie (FIX) */
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            margin-top: 4rem;
         }
 
-        /* Zusätzlicher Stil für den Footer */
-        .footer-separator {
-            border-top: 8px solid #2b6cb0; /* Dickere, dunklere blaue Linie */
+        /* GLOSSAR-GRID: Stärkerer Abstand und 2 Spalten ab 768px (FIX) */
+        .glossary-grid {
+            display: grid;
+            gap: 2.5rem; /* gap-y-4 */
+        }
+        
+        @media (min-width: 768px) {
+            .glossary-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 2.5rem; /* gap-x-10 */
+                row-gap: 1rem;
+            }
+        }
+        
+        .glossary-item {
+            margin-bottom: 1rem;
+        }
+        
+        /* Styles für Footer-Inhalte */
+        .footer-title {
+            font-size: 1.5rem; /* 2xl */
+            font-weight: 800; /* Extra Bold */
+            color: #2b6cb0; /* Blau */
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #63b3ed; /* border-blue-400 */
+            padding-bottom: 0.5rem;
         }
     </style>
 </head>
