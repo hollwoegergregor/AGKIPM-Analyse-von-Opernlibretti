@@ -7,6 +7,13 @@
     <!-- Lade Tailwind CSS CDN für schnelles und responsives Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* NEUER CSS-Block zur Stärkung des Glossar-Layouts auf Desktops */
+@media (min-width: 768px) {
+    .glossary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
         /* Konfiguriere die Schriftart 'Inter' */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
@@ -135,9 +142,10 @@
 
             <!-- GLOSSAR -->
             <section class="mb-12">
+                
                 <h3 class="text-2xl font-extrabold text-blue-800 mb-6 border-b-2 border-blue-400 pb-2">Glossar</h3>
                 
-                <div class="grid md:grid-cols-2 gap-x-10 gap-y-4 text-gray-700">
+                <div class="glossary-grid gap-x-10 gap-y-4 text-gray-700">
                     <div class="glossary-item">
                         <strong class="font-semibold text-blue-700 block mb-1">Libretto</strong>
                         <p class="text-sm">Der Text einer Oper, eines Oratoriums oder eines Musicals. Gelegentlich auch "Buch" genannt, weil es sich auch ohne Musik wie ein Roman lesen lässt. Im Libretto sind alle gesungenen und gesprochenen Texte festgelegt und Regieanweisungen zum Aussehen des Bühnebildes oder der Kostüme zwischen den einzelnen Teilen eingefügt. Weiterführender Artikel in der MGG: https://www.mgg-online.com/mgg/stable/532591</p>
