@@ -86,16 +86,16 @@
             <!-- Inhalt des Blogbeitrags (Ursprünglicher Text) -->
             <div class="post-content text-gray-700">
 
-                <p>Dieses Projekt verbindet die Methoden der Digitalen Geisteswissenschaften mit textbasierten Ansätzen der historischen Musikwissenschaft. Im Zentrum steht die systematische Untersuchung von Opernlibretti der Wiener Klassik, deren sprachliche und dramaturgische Schichten mithilfe großer Sprachmodelle transparent gemacht werden sollen. Libretti dieser Epoche bilden nicht nur die narrative Grundlage für musikalische Gestaltung, sondern spiegeln zugleich zeittypische Ausdrucksformen, emotionale Muster und komplexe Figurenkonstellationen wider.</p>
+                <p>Dieses Projekt verbindet die Methoden der Digitalen Geisteswissenschaften mit textbasierten Ansätzen der historischen Musikwissenschaft. Im Zentrum steht die systematische Untersuchung von Opernlibretti der Wiener Klassik, deren sprachliche und dramaturgische Feinheiten mithilfe von LLMs transparent gemacht werden sollen. Libretti bilden nicht nur die Grundlage für die musikalische Gestaltung der Opern, sondern spiegeln zugleich typische Ausdrucksformen der Entstehungszeit wider.</p>
                 
                 <h2 id="zielsetzung" class="section-subtitle">Zielsetzung und Leitfragen</h2>
-                <p>Das Projekt verfolgt die übergeordnete Frage, welche Themen, Emotionen und sprachlichen Strukturen die Libretti verschiedener Komponisten prägen. Ziel ist es, Konstanten und Unterschiede zwischen individuellen Handschriften, stilistischen Traditionen und spezifischen dramaturgischen Strategien sichtbar zu machen. Auf diese Weise sollen emotionale Profile, narrative Grundmodelle und charakterbezogene Muster vergleichbar werden.</p>
+                <p>Das Projekt verfolgt die übergeordnete Frage, welche Themen, Emotionen und sprachlichen Strukturen die Libretti verschiedener Komponisten prägen. Ziel ist es, Konstanten und Unterschiede zwischen den einzelnen Komponisten und Autoren und stilistischen Traditionen sichtbar zu machen. Auf diese Weise sollen häufiger vorkommende Emotionen, narrative Grundmodelle (wie "Liebesopern" oder "Rettungsgeschichten") und häufig auftretende Rollentypen (wie "Diener" oder "Adliger") vergleichbar werden.</p>
 
                 <h2 id="datenbasis" class="section-subtitle">Datenbasis und Korpus-Exemplar</h2>
                 <p>Die Datenbasis umfasst öffentlich zugängliche historische Textsammlungen wie <a href="http://www.opera-guide.ch" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">opera-guide.ch</a> und die Libretto-Edition der Digitalen Mozart-Edition (<a href="https://dme.mozarteum.at/DME/libretti-edition/wrkliste.php?sec=libedi&l=" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800">dme.mozarteum.at/DME/libretti-edition</a>). Die Dokumente liegen vorwiegend in .docx- oder .xml-Formaten vor und enthalten typischerweise Metadaten zu Werk, Autorenschaft, Entstehungszeit sowie ausführlich verzeichneten Rollen. Ein exemplarisches Werk aus dem Korpus ist Mozarts <em>Die Entführung aus dem Serail</em> (KV 384), ein zwischen Juli 1781 und Mai 1782 in Wien komponiertes Singspiel nach einem Text von Christoph Friedrich Bretzner in der Bearbeitung Johann Gottlieb Stephanies des Jüngeren. Die Wiener Erstaufführung erfolgte am 16. Juli 1782. Die Oper stellt ein vielschichtiges Figurenensemble bereit, zu dem Konstanze, Belmonte, Blonde, Pedrillo und Osmin gehören, ergänzt durch Neben- und Sprechrollen und dem Chor der Janitscharen. Solche detaillierten Metadaten sind für den strukturierten Einsatz von KI-Modellen essenziell, da sie die Zuordnung von Sprecherstimmen, Handlungsebenen und emotionalen Kontexten ermöglichen.</p>
 
                 <h2 id="methodik" class="section-subtitle">Methodisches Vorgehen mit LLMs</h2>
-                <p>Vor Beginn der computergestützten Analyse werden sämtliche Libretti formal vereinheitlicht, von Regieanweisungen befreit und in ein klares, maschinenlesbares Format überführt. Dieses bereinigte Korpus bildet die Grundlage für die modellgestützte Auswertung. Die Anwendung von LLMs ermöglicht anschließend die Extraktion zentraler thematischer Leitmotive, die Identifikation affektiver Muster sowie eine präzise Erfassung von Beziehungen zwischen den Figuren. Darüber hinaus entstehen szenenspezifische Zusammenfassungen, die später für umfassende Vergleichsstudien herangezogen werden können.</p>
+                <p>Vor Beginn der computergestützten Analyse werden sämtliche Libretti formal vereinheitlicht, von Regieanweisungen befreit und in ein klares, maschinenlesbares Format überführt. Dieses bereinigte Korpus bildet die Grundlage für die modellgestützte Auswertung. Die Anwendung von LLMs ermöglicht anschließend die Extraktion zentraler Themeninhalte, die Identifikation sogenanner Affekte sowie eine präzise Erfassung von Beziehungen zwischen den einzelnen Figuren. Darüber hinaus entstehen Zusammenfassungen der einzelnen Szenen, die später für groß angelegte Vergleiche herangezogen werden können.</p>
 
                 <p>Auf dieser Basis wird es möglich, die dramaturgischen Profile verschiedener Komponisten der Wiener Klassik systematisch miteinander in Beziehung zu setzen. Das Beispiel der <em>Entführung aus dem Serail</em> dient hierbei als erste Referenz zur Entwicklung und Feinjustierung des methodischen Vorgehens und zeigt exemplarisch, wie sich klassische Operntexte in ihrer emotionalen und narrativen Struktur algorithmisch erfassen lassen.</p>
                 
@@ -104,7 +104,7 @@
 
                 <h2 id="prompt-engineering" class="section-subtitle">Vertiefung: Prompt Engineering – Geplante LLM-Interaktionen</h2>
                 
-                <p>Die Qualität der Analyse steht und fällt mit der Präzision der Anweisungen an die Large Language Models (LLMs). Daher erfolt das Prompting in mehreren Schritten, um historische, kulturelle und dramaturgische Nuancen der Libretti zu erfassen und die Ergebnisse in einem strukturierten Format zu erhalten.</p>
+                <p>Die Qualität der Analyse steht und fällt mit der Präzision der Anweisungen an die LLMs. Daher erfolt das Prompting in mehreren Schritten, um historische, kulturelle und dramaturgische Nuancen der Libretti zu erfassen und die Ergebnisse in einem strukturierten Format zu erhalten.</p>
 
                 <h3 class="font-bold mt-6 mb-2 text-blue-600">Extraktion von Figurenbeziehungen (Relationen)</h3>
                 <p>Ein zentrales Ziel ist die Erstellung eines automatischen Beziehungsnetzwerks pro Oper. Hierzu wird ein Ausschnitt des Librettos an das Modell übergeben, mit dem Auftrag, die emotionalen Interaktionen zwischen den Figuren zu quantifizieren und qualifizieren. Die Ausgabe erfolgt in einem strukturierten, maschinenlesbaren Format (JSON) zur direkten Weiterverarbeitung.</p>
@@ -118,25 +118,61 @@
                 
 
                 <h3 class="font-bold mt-6 mb-2 text-blue-600">Identifikation affektiver Muster</h3>
-                <p>Zur Erfassung epochentypischer Themen (Ehre, Liebe, Freiheit) wird das LLM angewiesen, Textpassagen bestimmten Kategorien aus der historischen Affektenlehre zuzuordnen. Dies ermöglicht eine systematische, quantitative Erfassung des Gefühlshaushalts der Libretti.</p>
+                <p>Zur Erfassung epochentypischer Themen (Ehre, Liebe, Freiheit) wird das LLM angewiesen, Textpassagen bestimmten Kategorien aus der historischen Affektenlehre zuzuordnen. Dies ermöglicht eine systematische, quantitative Erfassung des emotionalen Spektrums der Libretti.</p>
 
                 <p class="italic text-sm text-gray-500 mb-1">Simulierte LLM-Ausgabe für Affektanalyse:</p>
                 <div class="llm-output">
                     **Simulierte LLM-Ausgabe (Auszug):** Trauer (Intensität 5/5, Begründung: "ew'ge Trennung," "finstrer Schmerz"); Sehnsucht (Intensität 3/5, Begründung: "verlorenes Glück").
                 </div>
 
-                <p>Diese konsistente und iterative Anwendung von Prompt-Templates schafft eine quantifizierbare Basis, um die dramaturgischen Profile verschiedener Komponisten der Wiener Klassik systematisch zu vergleichen.</p>
-
             </div>
         </div>
     </main>
 
-    <!-- Footer-Bereich (Jetzt stärker abgesetzt) -->
-    <footer id="kontakt" class="py-12 bg-gray-100 text-center text-gray-600 text-sm mt-16 footer-separator">
+    <!-- GLOSSAR, QUELLEN UND FUSSZEILE (Stark abgesetzt) -->
+    <footer class="footer-area">
         <div class="max-w-3xl mx-auto px-4">
-            <h3 class="text-xl font-extrabold text-blue-800 mb-3">Kontakt und Impressum</h3>
-            <p class="mb-1">&copy; 2025 Libretti-Analyse Projekt.</p>
-            <p>Ein Forschungsprojekt in den Bereichen Digitale Geisteswissenschaften und historische Musikwissenschaft. Fragen zum Projekt: <a href="mailto:info@libretti-analyse.at" class="text-blue-600 hover:text-blue-800 font-medium">info@libretti-analyse.de</a></p>
+
+            <!-- GLOSSAR -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-extrabold text-blue-800 mb-6 border-b-2 border-blue-400 pb-2">Glossar</h3>
+                
+                <div class="grid md:grid-cols-2 gap-x-10 gap-y-4 text-gray-700">
+                    <div class="glossary-item">
+                        <strong class="font-semibold text-blue-700 block mb-1">Libretto</strong>
+                        <p class="text-sm">Der Text einer Oper, eines Oratoriums oder eines Musicals. Gelegentlich auch "Buch" genannt, weil es sich auch ohne Musik wie ein Roman lesen lässt. Im Libretto sind alle gesungenen und gesprochenen Texte festgelegt und Regieanweisungen zum Aussehen des Bühnebildes oder der Kostüme zwischen den einzelnen Teilen eingefügt. Weiterführender Artikel in der MGG: https://www.mgg-online.com/mgg/stable/532591</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong class="font-semibold text-blue-700 block mb-1">Affekt</strong>
+                        <p class="text-sm">Affekte sind Emotionen, die durch Musik widergegeben oder ausgelöst werden sollen. Gewisse Instrumente, Tonarten oder Rhtythmen werden traditionell mit einzelne Affekten assoziiert (F-Dur galt lange als "pastorale Tonart", die Trompete spiegelt oft "Stolz" oder den Adel wider). MGG: https://www.mgg-online.com/mgg/stable/533056</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong class="font-semibold text-blue-700 block mb-1">Singspiel</strong>
+                        <p class="text-sm">Eine Unterform der Oper, die im deutschsprachigen Raum zur Zeit der Wiener Klassik als Gegenstück zu den höfischen Opern als Unterhaltung für das Brügergtum gedacht war. Die Definitionen der Unterformen der Oper (wie Singspiel) können je nach Lehrmeinung und Epoche stark variieren. MGG: https://www.mgg-online.com/mgg/stable/535212</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong class="font-semibold text-blue-700 block mb-1">Wiener Klassik</strong>
+                        <p class="text-sm">Eine musikalische Epoche, die grob die zweite Hälfte des 18. bis zum Beginn des 19. Jahrhunderts umfasst. Die wichtigsten Vertreter sind Joseph Haydn, Wolfgang Amadeus Mozart und Ludwig van Beethoven. MGG: https://www.mgg-online.com/mgg/stable/533699</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QUELLEN UND KORPUS -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-extrabold text-blue-800 mb-6 border-b-2 border-blue-400 pb-2">Quellen und Datenbasis</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                    <li><strong class="font-medium">Digitale Mozart-Edition (DME):</strong> Die Online-Edition der Libretti der Stiftung Mozarteum Salzburg stellt, ausgehend von den unterschiedlichen textlichen und musikalischen Quellen, verschiedene Fassungen der Texte synoptisch gegenüber</li>
+                    <li><strong class="font-medium">Opera-Guide:</strong> Öffentlich zugängliche Sammlung von über 500 historischen Opernlibretti, zusammengestellt vom Schweizer Intendaten und Musikwissenschaflter Heinz Kern.</li>
+                    <li><strong class="font-medium">Die Musik in Geschichte und Gegenwart (MGG):</strong>Die MGG ist eine allgemeine Enzyklopädie der Musik mit tiefgehenden Artikeln zu jedem Bereich der Musik.</li>
+                </ul>
+            </section>
+
+            <!-- IMPRESSUM / KONTAKT -->
+            <section class="text-center pt-8 border-t border-gray-400">
+                <h3 class="text-xl font-extrabold text-blue-800 mb-3">Impressum und Kontakt</h3>
+                <p class="mb-1 text-gray-700">&copy; 2025 Libretti-Analyse Projekt.</p>
+                <p class="text-gray-700">Ein Forschungsprojekt im Bereich Digitale Geisteswissenschaften. Fragen zum Projekt: <a href="mailto:info@libretti-analyse.de" class="text-blue-600 hover:text-blue-800 font-medium">info@libretti-analyse.de</a></p>
+            </section>
         </div>
     </footer>
 
