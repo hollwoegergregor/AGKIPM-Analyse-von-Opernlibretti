@@ -10,8 +10,8 @@ Dieses Projekt untersucht, wie historische Operntexte (Fallbeispiel: Mozarts *Di
 
 ## Nutzung (Prototyp starten)
 Das Tool benötigt keine Installation (Single-Page-Application). 
-1. Eigene Kopie klonen oder herunterladen.
-2. `index.html` im Browser öffnen.
+1. Eigene Kopie herunterladen.
+2. `prototyp.html` im Browser öffnen.
 3. Eigenen Google API-Key (Gemini 2.5 Flash) eingeben.
 
 ## Projektstruktur
