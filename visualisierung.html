@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesamtanalyse KV 384</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        :root { --primary: #8b0000; --bg: #f4f1ea; --text: #2c2c2c; }
+        body { font-family: 'Georgia', serif; background-color: var(--bg); color: var(--text); padding: 20px; max-width: 1400px; margin: 0 auto; }
+        header { text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { color: var(--primary); font-size: 2.5em; margin-bottom: 5px; }
+        h2 { font-size: 1.2em; color: #555; margin-top: 0; }
+        .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card h3 { border-bottom: 1px solid #ddd; padding-bottom: 10px; color: var(--primary); }
+        .chart-wrapper { position: relative; height: 350px; width: 100%; }
+        #network { width: 100%; height: 350px; background-color: #fafafa; border: 1px solid #eee; }
+        .legend { font-size: 0.9em; color: #666; margin-top: 10px; font-style: italic; }
+
+        /* NEU: Design für die Farblegende */
+.color-legend { display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 0.9em; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; }
+.color-box { width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>W. A. Mozart: „Die Entführung aus dem Serail“ (Gesamtanalyse)</h1>
+    <h2>LLM-gestützte Affekt-Analyse (Descartes-Modell) - 41 Szenen (Akt I - III)</h2>
+</header>
+
+<div class="grid">
+    <div class="card">
+        <h3>Emotionaler Verlauf der kompletten Oper</h3>
+        <div class="chart-wrapper">
+            <canvas id="affektChart"></canvas>
+        </div>
+        <div class="color-legend">
+    <div class="legend-item"><div class="color-box" style="background:#8b0000;"></div>Hass</div>
+    <div class="legend-item"><div class="color-box" style="background:#6f42c1;"></div>Verlangen</div>
+    <div class="legend-item"><div class="color-box" style="background:#0d6efd;"></div>Trauer</div>
+    <div class="legend-item"><div class="color-box" style="background:#d63384;"></div>Liebe</div>
+    <div class="legend-item"><div class="color-box" style="background:#ffc107;"></div>Bewunderung</div>
+    <div class="legend-item"><div class="color-box" style="background:#198754;"></div>Freude</div>
+</div>
+        <div class="legend">Erkenntnis: Die Gegensätze zwischen Osmins Hass und Belmontes/Konstanzes Liebe bzw. Bassas Verlangen nach Konstanze stehen im Fokus des Handlungsverlaufs.</div>
+    </div>
+
+    <div class="card">
+        <h3>Affekt-Soziogramm</h3>
+        <div id="network"></div>
+        <div class="legend">Knotengröße = Dramaturgische Relevanz. Rote Pfeile = Hass/Gewalt, Grüne Pfeile = Liebe/Treue. Man sieht: Osmin ist der "rote" Mittelpunkt des Konflikts.</div>
+    </div>
+</div>
+
+<script>
+    // --- 41 SZENEN DATEN (Dein vollständiger Datensatz!) ---
+    const sceneData = [
+        { label: "I.1", affekt: "Verlangen", intensity: 8 },
+        { label: "I.2", affekt: "Hass", intensity: 9 },
+        { label: "I.3", affekt: "Hass", intensity: 10 },
+        { label: "I.4", affekt: "Verlangen", intensity: 8 },
+        { label: "I.5", affekt: "Verlangen", intensity: 9 },
+        { label: "I.6", affekt: "Bewunderung", intensity: 8 },
+        { label: "I.7", affekt: "Trauer", intensity: 9 },
+        { label: "I.8", affekt: "Verlangen", intensity: 8 },
+        { label: "I.9", affekt: "Liebe", intensity: 9 },
+        { label: "I.10", affekt: "Hass", intensity: 9 },
+        { label: "II.1a", affekt: "Verlangen", intensity: 8 },
+        { label: "II.1b", affekt: "Verlangen", intensity: 9 },
+        { label: "II.1c", affekt: "Hass", intensity: 9 },
+        { label: "II.2", affekt: "Trauer", intensity: 9 },
+        { label: "II.3", affekt: "Hass", intensity: 9 },
+        { label: "II.4", affekt: "Verlangen", intensity: 9 },
+        { label: "II.5", affekt: "Trauer", intensity: 7 },
+        { label: "II.6", affekt: "Freude", intensity: 9 },
+        { label: "II.7", affekt: "Verlangen", intensity: 8 },
+        { label: "II.8a", affekt: "Verlangen", intensity: 9 },
+        { label: "II.8b", affekt: "Freude", intensity: 9 },
+        { label: "II.9a", affekt: "Freude", intensity: 9 },
+        { label: "II.9b", affekt: "Liebe", intensity: 9 },
+        { label: "II.9c", affekt: "Liebe", intensity: 9 },
+        { label: "III.1", affekt: "Verlangen", intensity: 9 },
+        { label: "III.2", affekt: "Trauer", intensity: 7 },
+        { label: "III.3", affekt: "Liebe", intensity: 9 },
+        { label: "III.4a", affekt: "Verlangen", intensity: 9 },
+        { label: "III.4b", affekt: "Verlangen", intensity: 9 },
+        { label: "III.5a", affekt: "Freude", intensity: 9 },
+        { label: "III.5b", affekt: "Freude", intensity: 9 },
+        { label: "III.6a", affekt: "Hass", intensity: 9 },
+        { label: "III.6b", affekt: "Liebe", intensity: 9 },
+        { label: "III.6c", affekt: "Hass", intensity: 9 },
+        { label: "III.7", affekt: "Freude", intensity: 10 },
+        { label: "III.8", affekt: "Trauer", intensity: 9 },
+        { label: "III.9a", affekt: "Freude", intensity: 8 },
+        { label: "III.9b", affekt: "Bewunderung", intensity: 9 },
+        { label: "III.9c", affekt: "Hass", intensity: 10 },
+        { label: "III.9d", affekt: "Hass", intensity: 8 },
+        { label: "III.9e", affekt: "Verlangen", intensity: 8 }
+    ];
+
+    const colorMap = {
+        "Hass": "#8b0000",       // Dunkelrot
+        "Verlangen": "#6f42c1",  // Lila
+        "Trauer": "#0d6efd",     // Kräftiges Blau
+        "Liebe": "#d63384",      // Magenta/Pink
+        "Bewunderung": "#ffc107",// Gelb/Gold
+        "Freude": "#198754"      // Kräftiges Grün
+    };
+
+    // --- CHART 1: DAS GIGANTISCHE BALKENDIAGRAMM ---
+    const ctx = document.getElementById('affektChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: sceneData.map(d => d.label),
+            datasets: [{
+                label: 'Intensität (1-10)',
+                data: sceneData.map(d => d.intensity),
+                backgroundColor: sceneData.map(d => colorMap[d.affekt]),
+                borderColor: '#333',
+                borderWidth: 1
+            }]
+        },
+        options: { 
+            responsive: true, maintainAspectRatio: false,
+            scales: { y: { beginAtZero: true, max: 10 } },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // --- CHART 2: DAS AGGREGIERTE GESAMT-SOZIOGRAMM ---
+    const nodes = new vis.DataSet([
+        { id: 1, label: "Belmonte", color: "#e07a5f", size: 35 },
+        { id: 2, label: "Konstanze", color: "#4a6fa5", size: 35 },
+        { id: 3, label: "Osmin", color: "#8b0000", size: 40 },
+        { id: 4, label: "Pedrillo", color: "#ccc", size: 25 },
+        { id: 5, label: "Bassa Selim", color: "#f2cc8f", size: 30 },
+        { id: 6, label: "Blonde", color: "#ffb6c1", size: 25 },
+        { id: 7, label: "Chor", color: "#eee", size: 20 }
+    ]);
+
+    const edges = new vis.DataSet([
+        // HASS-Pfeile (Rot)
+        { from: 3, to: 1, label: "Hass/Mordlust", color: "#8b0000", arrows: "to", width: 3 },
+        { from: 3, to: 4, label: "Abscheu", color: "#8b0000", arrows: "to", width: 3 },
+        { from: 5, to: 1, label: "Rache", color: "#8b0000", arrows: "to", width: 2 },
+        // LIEBE-Pfeile (Grün)
+        { from: 1, to: 2, label: "Bedingungslose Liebe", color: "#81b29a", arrows: "to, from", width: 4 },
+        { from: 4, to: 6, label: "Liebe/Treue", color: "#81b29a", arrows: "to, from", width: 2 },
+        // VERLANGEN / BEWUNDERUNG (Orange/Gold)
+        { from: 5, to: 2, label: "Verlangen", color: "#e07a5f", arrows: "to", width: 3 },
+        { from: 7, to: 5, label: "Bewunderung", color: "#f2cc8f", arrows: "to", width: 2 },
+        { from: 1, to: 5, label: "Dankbarkeit", color: "#f2cc8f", arrows: "to", width: 2 }
+    ]);
+
+    const container = document.getElementById("network");
+    const data = { nodes: nodes, edges: edges };
+    const options = {
+        // NEU: springLength von 150 auf 350 erhöht -> Die Pfeile werden mehr als doppelt so lang.
+        physics: { enabled: true, barnesHut: { springLength: 350 } }, 
+        
+        // NEU: Schriftgröße von 10 auf 16 erhöht + weißer Hintergrund für bessere Lesbarkeit.
+        edges: { font: { size: 16, align: "middle", background: "white" } },
+        
+        nodes: { shape: "dot", font: { size: 14 } }
+    };
+    new vis.Network(container, data, options);
+</script>
+
+</body>
+</html>
