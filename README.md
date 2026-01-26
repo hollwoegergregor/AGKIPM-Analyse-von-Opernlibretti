@@ -1,7 +1,5 @@
 # AGKIPM-Analyse-von-Opernlibretti
 
-# A.I.D.A. - Affekt-Identifikation & Dramaturgische Analyse 🎼
-
 **Ein MVRT (Minimal Viable Research Tool) zur LLM-gestützten Analyse historischer Libretti der Wiener Klassik.**
 
 **Kurs:** LLM-unterstütztes Wissens- und Projektmanagement  
